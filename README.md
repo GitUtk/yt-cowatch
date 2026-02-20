@@ -2,6 +2,10 @@
 
 A real-time co-watching platform that allows synchronized YouTube video playback and interactive group chat. The system features latency compensation, active synchronization diagnostics, administrative control structures, and a premium dark-themed user interface.
 
+## Architecture Flowchart
+
+![Architecture Flowchart](./assets/image.png)
+
 ## Technologies Used
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
@@ -69,20 +73,3 @@ A real-time co-watching platform that allows synchronized YouTube video playback
    npm run dev
    ```
 
----
-
-## Protocol & Synchronisation Mechanics
-
-### Time Drift Calculation
-When updates are received, the target room coordinate is adjusted to account for network transmission time:
-```javascript
-targetTime = roomTime + (Date.now() - roomUpdateTimestamp) / 1000;
-```
-If the local player is playing and deviates by more than `1.0` seconds (or immediately when paused), the client issues a native `seekTo` correction.
-
-### Diagnostics Polling
-Clients run a 3-second diagnostic reporting tick:
-*   Client reports state to server: `report-status` -> `{ videoId, isPlaying, currentTime }`.
-*   Server evaluates alignment with expected room state:
-    $$\text{Synced} = (\text{videoId} == \text{roomVideoId}) \land (|\text{clientTime} - \text{roomTime}| < 3\text{s})$$
-*   Server updates viewer attributes and broadcasts the status list to update the visual sync health lights.
