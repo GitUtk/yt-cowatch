@@ -25,8 +25,6 @@ A real-time co-watching platform that allows synchronized YouTube video playback
 *   **Active Sync Diagnostics**: Clients report status (timestamp, state) periodically, and the server computes synchronization health to show real-time green/red connection badges for active viewers.
 *   **Role-Based Authority (Admin Controls)**: The room creator acts as the administrator with exclusive playback control (via standard player timeline/bar). Joined members are locked to watch-only mode with custom overlay restrictions.
 *   **Integrated Group Chat**: Seamless real-time chat updates to communicate during video sessions, including system notification events.
-*   **Modern Dark Theme**: Styled with a minimal, dark-themed Shadcn-inspired CSS structure using high contrast, custom inputs, borders, and slider thumbs.
-
 
 ---
 
