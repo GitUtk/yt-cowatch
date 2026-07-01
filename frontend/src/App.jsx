@@ -19,7 +19,9 @@ export default function App() {
 
   useEffect(() => {
     if (!isJoined) return;
-    const s = io(BACKEND_URL);
+    const s = io(BACKEND_URL, {
+      transports: ["websocket"]
+    });
     setSocket(s);
     s.emit("join-room", { roomId, username });
     s.on("room-update", (data) => {
